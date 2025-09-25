@@ -1,0 +1,1 @@
+{"version":3,"file":"catchAsyncErrors.d.ts","sourceRoot":"","sources":["../../middleware/catchAsyncErrors.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAC;AAE1D,eAAO,MAAM,eAAe,GAAI,SAAS,GAAG,MAAM,KAAK,OAAO,EAAE,KAAK,QAAQ,EAAE,MAAM,YAAY,SAEhG,CAAA"}
