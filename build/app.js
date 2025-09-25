@@ -47,12 +47,17 @@ exports.app.get('/test', (req, res, next) => {
         message: "Api is working successfully"
     });
 });
-// UNKNOWN ROUTES
-// app.all("*", (req: Request, res: Response, next: NextFunction) => {
-//     const err = new Error(`Route ${req.originalUrl} not found`) as any;
-//     err.statusCode = 404;
-//     next(err)
-// })
+exports.app.get('/', (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: 'Welcome to the LMS API. Use /api/v1 for API endpoints or /test for a test route.'
+    });
+});
+exports.app.all("*", (req, res, next) => {
+    const err = new Error(`Route ${req.originalUrl} not found`);
+    err.statusCode = 404;
+    next(err);
+});
 exports.app.use(limiter);
 exports.app.use(error_1.ErrorMiddleware);
 //# sourceMappingURL=app.js.map
