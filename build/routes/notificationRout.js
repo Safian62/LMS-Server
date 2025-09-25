@@ -11,4 +11,3 @@ const notificationRouter = express_1.default.Router();
 notificationRouter.get('/get-all-notifications', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), notification_1.getNotification);
 notificationRouter.put('/update-notification/:id', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), notification_1.updateNotification);
 exports.default = notificationRouter;
-//# sourceMappingURL=notificationRout.js.map

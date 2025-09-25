@@ -49,4 +49,3 @@ const orderSchema = new mongoose_1.Schema({
 }, { timestamps: true });
 const orderModel = mongoose_1.default.model('Order', orderSchema);
 exports.default = orderModel;
-//# sourceMappingURL=orderModel.js.map

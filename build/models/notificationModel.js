@@ -51,4 +51,3 @@ const notificationSchema = new mongoose_1.Schema({
 }, { timestamps: true });
 const notificationModel = mongoose_1.default.model('Notification', notificationSchema);
 exports.default = notificationModel;
-//# sourceMappingURL=notificationModel.js.map

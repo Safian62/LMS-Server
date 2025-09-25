@@ -8,4 +8,3 @@ class ErrorHandler extends Error {
     }
 }
 exports.default = ErrorHandler;
-//# sourceMappingURL=ErrorHandler.js.map

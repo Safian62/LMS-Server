@@ -35,4 +35,3 @@ const sendMail = async (options) => {
     await transporter.sendMail(mailOptions);
 };
 exports.default = sendMail;
-//# sourceMappingURL=sendMail.js.map

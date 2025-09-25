@@ -13,4 +13,3 @@ orderRouter.get('/get-orders', user_1.updateAccessToken, auth_1.isAuthenticated,
 orderRouter.get('/payment/stripe-publishable-key', order_1.sendStripePublishKey);
 orderRouter.post('/payment', auth_1.isAuthenticated, order_1.newPayment);
 exports.default = orderRouter;
-//# sourceMappingURL=orderRout.js.map

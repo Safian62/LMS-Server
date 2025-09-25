@@ -38,4 +38,3 @@ const sendToken = async (user, statusCode, res) => {
     });
 };
 exports.sendToken = sendToken;
-//# sourceMappingURL=jwt.js.map

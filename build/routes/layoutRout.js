@@ -12,4 +12,3 @@ layoutRouter.post('/create-layout', user_1.updateAccessToken, auth_1.isAuthentic
 layoutRouter.put('/edit-layout', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), layout_1.editLayout);
 layoutRouter.get('/get-layout/:type', layout_1.getLayoutByType);
 exports.default = layoutRouter;
-//# sourceMappingURL=layoutRout.js.map

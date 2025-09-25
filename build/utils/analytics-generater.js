@@ -19,4 +19,3 @@ async function generataLast12MonthData(model) {
     }
     return { last12Month };
 }
-//# sourceMappingURL=analytics-generater.js.map

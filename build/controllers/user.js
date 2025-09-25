@@ -317,4 +317,3 @@ exports.deleteUser = (0, catchAsyncErrors_1.CatchAsyncError)(async (req, res, ne
         return next(new ErrorHandler_1.default(error.message, 400));
     }
 });
-//# sourceMappingURL=user.js.map

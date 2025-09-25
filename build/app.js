@@ -55,4 +55,3 @@ exports.app.get('/test', (req, res, next) => {
 // })
 exports.app.use(limiter);
 exports.app.use(error_1.ErrorMiddleware);
-//# sourceMappingURL=app.js.map

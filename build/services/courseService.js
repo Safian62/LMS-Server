@@ -22,4 +22,3 @@ const getAllCoursesService = async (res) => {
     });
 };
 exports.getAllCoursesService = getAllCoursesService;
-//# sourceMappingURL=courseService.js.map

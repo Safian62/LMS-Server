@@ -21,4 +21,3 @@ courseRouter.get('/get-admin-courses', user_1.updateAccessToken, auth_1.isAuthen
 courseRouter.post('/getVdoCipherOTP', course_1.generateVideoUrl);
 courseRouter.delete('/delete-course/:id', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), course_1.deleteCourse);
 exports.default = courseRouter;
-//# sourceMappingURL=courseRout.js.map

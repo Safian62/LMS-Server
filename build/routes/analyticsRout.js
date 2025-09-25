@@ -12,4 +12,3 @@ analyticRouter.get('/get-users-analytics', user_1.updateAccessToken, auth_1.isAu
 analyticRouter.get('/get-courses-analytics', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), analytics_1.getCoursesAnalytics);
 analyticRouter.get('/get-orders-analytics', user_1.updateAccessToken, auth_1.isAuthenticated, (0, auth_1.authorizeRoles)('admin'), analytics_1.getOrdersAnalytics);
 exports.default = analyticRouter;
-//# sourceMappingURL=analyticsRout.js.map

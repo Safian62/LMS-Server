@@ -22,4 +22,3 @@ server.listen(process.env.PORT, () => {
     console.log(`Server is connected with port ${process.env.PORT}`);
     (0, db_1.default)();
 });
-//# sourceMappingURL=server.js.map
