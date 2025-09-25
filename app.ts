@@ -20,7 +20,7 @@ app.use(cookieparser())
 
 // CORS  =>  CORS ORIGIN RECOURSES SHARING
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: ['https://lms-client-theta-black.vercel.app'],
     credentials: true
 }))
 
