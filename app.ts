@@ -57,11 +57,6 @@ app.get('/', (req: Request, res: Response) => {
         message: 'Welcome to the LMS API. Use /api/v1 for API endpoints or /test for a test route.'
     });
 });
-app.all("*", (req: Request, res: Response, next: NextFunction) => {
-    const err = new Error(`Route ${req.originalUrl} not found`) as any;
-    err.statusCode = 404;
-    next(err);
-});
 
 
 app.use(limiter)
