@@ -53,11 +53,6 @@ exports.app.get('/', (req, res) => {
         message: 'Welcome to the LMS API. Use /api/v1 for API endpoints or /test for a test route.'
     });
 });
-exports.app.all("*", (req, res, next) => {
-    const err = new Error(`Route ${req.originalUrl} not found`);
-    err.statusCode = 404;
-    next(err);
-});
 exports.app.use(limiter);
 exports.app.use(error_1.ErrorMiddleware);
 //# sourceMappingURL=app.js.map
