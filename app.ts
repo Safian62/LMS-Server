@@ -1,65 +1,65 @@
-require("dotenv").config()
-import express, { NextFunction, Request, Response } from 'express'
-import cors from 'cors'
-import cookieparser from 'cookie-parser'
-import { ErrorMiddleware } from './middleware/error'
-import userRouter from './routes/userRout'
-import courseRouter from './routes/courseRout'
-import orderRouter from './routes/orderRout'
-import notificationRouter from './routes/notificationRout'
-import analyticRouter from './routes/analyticsRout'
-import layoutRouter from './routes/layoutRout'
-export const app = express();
-const { rateLimit } = require('express-rate-limit')
+import { VercelRequest, VercelResponse } from "@vercel/node";
+import express, { NextFunction, Request, Response } from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import { ErrorMiddleware } from "./middleware/error";
+import userRouter from "./routes/userRout";
+import courseRouter from "./routes/courseRout";
+import orderRouter from "./routes/orderRout";
+import notificationRouter from "./routes/notificationRout";
+import analyticRouter from "./routes/analyticsRout";
+import layoutRouter from "./routes/layoutRout";
+import { rateLimit } from "express-rate-limit";
+import connectDB from "./utils/db";
+
+// Initialize Express app
+const app = express();
 
 // BODY PARSER
-app.use(express.json({ limit: "50mb" }))
+app.use(express.json({ limit: "50mb" }));
 
 // COOKIE PARSER
-app.use(cookieparser())
+app.use(cookieParser());
 
-// CORS  =>  CORS ORIGIN RECOURSES SHARING
-app.use(cors({
-    origin: ['https://lms-client-theta-black.vercel.app'],
-    credentials: true
-}))
+// CORS
+app.use(
+  cors({
+    origin: ["https://lms-client-theta-black.vercel.app"], // replace with your frontend URL
+    credentials: true,
+  })
+);
 
-// SET API LIMIT 
-
+// Rate Limiter
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    standardHeader: 'draft-7',
-    legacyHeaders: false
-})
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
+app.use(limiter);
+
+// Connect to DB (optional: per request for serverless)
+connectDB().catch((err) => console.error(err));
 
 // ROUTES
+app.use("/api/v1", userRouter);
+app.use("/api/v1", courseRouter);
+app.use("/api/v1", orderRouter);
+app.use("/api/v1", notificationRouter);
+app.use("/api/v1", analyticRouter);
+app.use("/api/v1", layoutRouter);
 
-app.use('/api/v1', userRouter)
-app.use('/api/v1', courseRouter)
-app.use('/api/v1', orderRouter)
-app.use('/api/v1', notificationRouter)
-app.use('/api/v1', analyticRouter)
-app.use('/api/v1', layoutRouter)
+// TEST ROUTE
+app.get("/test", (req: Request, res: Response) => {
+  res.status(200).json({
+    success: true,
+    message: "API is working successfully",
+  });
+});
 
-// TESTING API
-app.get('/test', (req: Request, res: Response, next: NextFunction) => {
-    res.status(200).json({
-        success: true,
-        message: "Api is working successfully"
-    })
-})
-
-// UNKNOWN ROUTES
-// app.all("*", (req: Request, res: Response, next: NextFunction) => {
-//     const err = new Error(`Route ${req.originalUrl} not found`) as any;
-
-//     err.statusCode = 404;
-//     next(err)
-
-// })
-
-
-app.use(limiter)
+// ERROR HANDLING
 app.use(ErrorMiddleware);
+
+// EXPORT AS VERCEL HANDLER
+export default (req: VercelRequest, res: VercelResponse) => app(req, res);
